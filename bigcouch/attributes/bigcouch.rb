@@ -36,3 +36,11 @@ set[:bigcouch][:erlang][:node_name] = "bigcouch"
 
 set[:bigcouch][:version] = "0.3-1"
 set[:bigcouch][:repo_url] = "http://cloud.github.com/downloads/cloudant/bigcouch"
+
+# attribs for silverline monitoring
+if attribute?(:scalarium)
+  default[:silverline][:environment] = node[:scalarium][:cluster][:name]
+else
+  default[:silverline][:environment] = "production"
+end
+default[:silverline][:name] = node[:bigcouch][:erlang][:node_name]
